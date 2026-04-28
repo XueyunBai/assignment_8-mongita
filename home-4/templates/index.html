@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="hero">
+    <h2>Welcome to Campus Book Corner</h2>
+    <p>
+        This is your bookstore management system connected to a Mongita database.
+        You can view, create, edit, and delete books.
+    </p>
+
+    <div class="home-buttons">
+        <a class="button" href="{{ url_for('read') }}">View All Books</a>
+        <a class="button secondary" href="{{ url_for('create') }}">Add New Book</a>
+    </div>
+</section>
+
+<!-- 分类区 -->
+<section>
+    <h2>Book Categories</h2>
+
+    <div class="category-grid">
+
+        {% for category in categories %}
+        <div class="category-card">
+
+            <img class="category-image"
+                 src="{{ url_for('static', filename='images/categories/' + category.name + '.jpg') }}"
+                 alt="{{ category.name }}">
+
+            <h3>{{ category.name }}</h3>
+
+            <p>ID: {{ category.id }}</p>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}
